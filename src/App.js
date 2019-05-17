@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useSpring, animated } from "react-spring";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const fade = useSpring({
+    from: {
+      opacity: 0,
+      transform: "translateY(50px)",
+    },
+    opacity: 1,
+    transform: "translateY(0)",
+  });
+
   return (
-    <div className="App">
+    <animated.div className="App" style={fade}>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={logo} className="logo" />
+        <button className="menu-button">Menu</button>
       </header>
-    </div>
+    </animated.div>
   );
 }
 
