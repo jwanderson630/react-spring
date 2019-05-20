@@ -1,26 +1,28 @@
-import React from "react";
-import { useSpring, animated } from "react-spring";
-import logo from "./logo.svg";
+import React, { useState } from "react";
+import Header from "./Header";
+import Toggle from "./Toggle2";
+import ToggleArray from "./ToggleArray";
+import Checkout from "./Checkout";
 import "./App.css";
 
-function App() {
-  const fade = useSpring({
-    from: {
-      opacity: 0,
-      transform: "translateY(50px)",
-    },
-    opacity: 1,
-    transform: "translateY(0)",
-  });
+const MenuContext = React.createContext({});
 
+function App() {
+  const [isOpen, setOpen] = useState(false);
   return (
-    <animated.div className="App" style={fade}>
-      <header className="App-header">
-        <img src={logo} className="logo" />
-        <button className="menu-button">Menu</button>
-      </header>
-    </animated.div>
+    <div className="App">
+      <MenuContext.Provider value={{ isOpen, setOpen: () => setOpen(!isOpen) }}>
+        <Header />
+        {/* <Menu /> */}
+        <Checkout />
+        <main>
+          <Toggle />
+          <ToggleArray />
+        </main>
+      </MenuContext.Provider>
+    </div>
   );
 }
 
+export { MenuContext };
 export default App;
