@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import Toggle from "./Toggle2";
-import ToggleArray from "./ToggleArray";
 import Checkout from "./Checkout";
+import SlidingRouter from "./SlidingRouter";
 import "./App.css";
 
 const MenuContext = React.createContext({});
@@ -16,8 +15,9 @@ function App() {
         {/* <Menu /> */}
         <Checkout />
         <main>
-          <Toggle />
-          <ToggleArray />
+          {/* <Toggle />
+          <ToggleArray /> */}
+          <SlidingRouter />
         </main>
       </MenuContext.Provider>
     </div>
